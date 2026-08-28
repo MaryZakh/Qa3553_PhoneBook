@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,6 +16,7 @@ class ContactPage(BasePage):
     ADDRESS_INPUT = (By.CSS_SELECTOR, "input[placeholder='Address']")
     DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[placeholder='description']")
     SAVE_BTN = (By.XPATH, "//button[b[text()='Save']]")
+    CONTACT_NAV_LINK = (By.CSS_SELECTOR,"[href='/contacts']")
 
     # def __init__(self, driver):
     #     self.driver = driver
@@ -78,8 +81,15 @@ class ContactPage(BasePage):
 
 
 
+    def open_contact_list(self):
+        self.click(self.CONTACT_NAV_LINK)
+        WebDriverWait(self.driver,5).until(EC.url_contains("/contacts"))
+        time.sleep(1)
 
 
+
+    def contact_cards_count(self,phone):
+        return len(self.driver.find_elements(By.XPATH,f"//h3[text()='{phone}']"))
 
 
 
