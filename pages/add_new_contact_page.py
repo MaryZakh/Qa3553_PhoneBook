@@ -71,6 +71,20 @@ class ContactPage(BasePage):
         return element.is_displayed()
 
 
+    def is_add_button_active(self):
+        add_link = self.find(self.ADD_NAV_LINK)
+        return "active" in add_link.get_attribute("class")
+
+
+
+
+
+
+
+
+
+
+
     def open_contact_details(self,phone):
         card = self.driver.find_element(By.XPATH, f"//h3[text()='{phone}']/..")
         card.click()
