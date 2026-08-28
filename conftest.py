@@ -1,8 +1,9 @@
 import pytest
 from selenium import webdriver
 
+from data.user_data import exiting_user
 from pages.login_page import LoginPage
-from tests.test_login import VALID_EMAIL, VALID_PASSWORD
+
 
 
 @pytest.fixture
@@ -19,10 +20,10 @@ def driver():
 @pytest.fixture
 def authenticated_driver(driver):
     login_page = LoginPage(driver)
-
+    user = exiting_user()
     login_page.open_login_form()
-    login_page.fill_email(VALID_EMAIL)
-    login_page.fill_password(VALID_PASSWORD)
+    login_page.fill_email(user.username)
+    login_page.fill_password(user.password)
     login_page.submit_login()
 
     return driver
