@@ -1,5 +1,6 @@
 import uuid
 
+from data.user_data import create_user, invalid_email_user, invalid_password_user, exiting_user
 from models.user import User
 from pages.registration_page import RegistrationPage
 
@@ -7,12 +8,7 @@ from pages.registration_page import RegistrationPage
 def test_registration_success(driver):
     registration_page = RegistrationPage(driver)
 
-    random_suffix = uuid.uuid4().hex[:8]
-
-    user = User(
-        f"mariia_test_{random_suffix}@gmail.com",
-        "Password123$"
-    )
+    user= create_user()
 
     registration_page.open_registration_form()
     registration_page.fill_email(user.username)
@@ -25,10 +21,7 @@ def test_registration_success(driver):
 def test_registration_wrong_email(driver):
     registration_page = RegistrationPage(driver)
 
-    user = User(
-        "mariia_testgmail.com",
-        "Password123$"
-    )
+    user = invalid_email_user()
 
     registration_page.open_registration_form()
     registration_page.fill_email(user.username)
@@ -41,11 +34,7 @@ def test_registration_wrong_email(driver):
 def test_registration_wrong_password(driver):
     registration_page = RegistrationPage(driver)
 
-    user = User(
-        "mariia_test@gmail.com",
-        "Pa123$"
-    )
-
+    user = invalid_password_user()
     registration_page.open_registration_form()
     registration_page.fill_email(user.username)
     registration_page.fill_password(user.password)
@@ -58,11 +47,7 @@ def test_registration_wrong_password(driver):
 def test_registration_exists_user(driver):
     registration_page = RegistrationPage(driver)
 
-    user = User(
-        "margo@gmail.com",
-        "Mmar123456$"
-    )
-
+    user = exiting_user()
     registration_page.open_registration_form()
     registration_page.fill_email(user.username)
     registration_page.fill_password(user.password)
