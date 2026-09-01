@@ -13,7 +13,7 @@ def create_contact(name=None, last_name=None, phone=None,
         phone=phone if phone is not None else fake.numerify("050#########"),
         email=email if email is not None else fake.unique.email(),
         address=address if address is not None else fake.street_address(),
-        description=description if not None else fake.sentence(nb_words=5)
+        description=description if description is not None else fake.sentence(nb_words=5)
 
     )
 

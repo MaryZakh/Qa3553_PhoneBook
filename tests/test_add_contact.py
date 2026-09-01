@@ -5,7 +5,6 @@ import pytest
 from faker import Faker
 
 from data.contact_data import create_contact
-from models.contact import Contact
 from pages.add_new_contact_page import ContactPage
 from pages.contacts_page import ContactsPage
 
@@ -108,7 +107,7 @@ def test_add_contact_empty_address(authenticated_driver):
 
     assert contact_page.is_add_button_active()
 
-    contacts_page.open_contact_list()
+    contacts_page.open_contacts_list()
     assert contacts_page.contact_cards_count(contact.phone) == 0
 
 
@@ -127,7 +126,7 @@ def test_add_contact_invalid_phone(authenticated_driver):
     contact_page.accept_alert()
     assert contact_page.is_add_button_active()
 
-    contacts_page.open_contact_list()
+    contacts_page.open_contacts_list()
     assert contacts_page.contact_cards_count(contact.phone) == 0
 
 
@@ -145,7 +144,7 @@ def test_add_contact_invalid_email(authenticated_driver):
 
     assert contact_page.is_add_button_active()
 
-    contacts_page.open_contact_list()
+    contacts_page.open_contacts_list()
     assert contacts_page.contact_cards_count(contact.phone) == 0
 
 
@@ -153,6 +152,7 @@ def test_add_contact_invalid_email(authenticated_driver):
 def test_add_contact_duplicate_phone_rejected(authenticated_driver):
     contact_page = ContactPage(authenticated_driver)
     contacts_page = ContactsPage(authenticated_driver)
+
     shared_phone = fake.unique.numerify("050##########")
     first_contact = create_contact(phone=shared_phone)
     second_contact = create_contact(phone=shared_phone)
@@ -167,5 +167,5 @@ def test_add_contact_duplicate_phone_rejected(authenticated_driver):
     contact_page.submit_contact()
 
 
-    contacts_page.open_contact_list()
+    contacts_page.open_contacts_list()
     assert contacts_page.contact_cards_count(shared_phone) == 1

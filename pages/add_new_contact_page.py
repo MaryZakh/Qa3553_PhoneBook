@@ -68,17 +68,15 @@ class ContactPage(BasePage):
         self.click(self.SAVE_BTN)
 
 
-
-
     def is_add_button_active(self):
         add_link = self.find(self.ADD_NAV_LINK)
         return "active" in add_link.get_attribute("class")
 
 
-
-
-
-
+    def create_contact_steps(self, contact):
+        self.open_contact_form()
+        self.fill_contact_form(contact)
+        self.submit_contact()
 
 
 
