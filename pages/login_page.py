@@ -1,3 +1,4 @@
+import logging
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -5,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 
+logger = logging.getLogger(__name__)
 
 class LoginPage(BasePage):
     LOGIN_NAV_LINK = (By.CSS_SELECTOR, "[href='/login']")
@@ -19,6 +21,7 @@ class LoginPage(BasePage):
 
     def open_login_form(self):
         # self.driver.find_element(*self.LOGIN_NAV_LINK).click()
+        logger.info("Opening login form")
         self.click(self.LOGIN_NAV_LINK)
 
 
