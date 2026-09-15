@@ -43,6 +43,8 @@ def test_edit_contact_last_name_updated(authenticated_driver):
     assert contacts_page.get_edit_contact(contacts_page.EDIT_LAST_NAME_INPUT) == new_last_name
 
 
+@pytest.mark.smoke
+@pytest.mark.regression
 def test_edit_contact_phone_updated(authenticated_driver):
     logger.info("Test: edit_contact_phone_updated")
     contact_page = ContactPage(authenticated_driver)
@@ -118,7 +120,7 @@ def test_edit_contact_description_updated(authenticated_driver):
     contacts_page.open_edit_mode()
     assert contacts_page.get_edit_contact(contacts_page.EDIT_DESCRIPTION_INPUT) == new_description
 
-
+@pytest.mark.regression
 def test_edit_contact_empty_name_rejected(authenticated_driver):
     contact_page = ContactPage(authenticated_driver)
     contacts_page = ContactsPage(authenticated_driver)
@@ -165,7 +167,7 @@ def test_edit_contact_empty_phone_updated(authenticated_driver):
 
     assert contacts_page.contact_cards_count(contact.phone) == 1
 
-
+@pytest.mark.regression
 def test_edit_contact_empty_email_rejected(authenticated_driver):
     contact_page = ContactPage(authenticated_driver)
     contacts_page = ContactsPage(authenticated_driver)
@@ -234,6 +236,6 @@ def test_edit_contact_duplicate_email_negative(authenticated_driver):
     contacts_page.set_edit_field(contacts_page.EDIT_EMAIL_INPUT, existing_contact.email)
     contacts_page.submit_edit()
 
-    contacts_page.open_contact_details(other_contact)
+    contacts_page.open_contact_details(other_contact.phone)
     contacts_page.open_edit_mode()
     assert contacts_page.get_edit_contact(contacts_page.EDIT_EMAIL_INPUT) == other_contact.email

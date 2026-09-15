@@ -1,10 +1,11 @@
-import uuid
+import pytest
 
-from data.user_data import create_user, invalid_email_user, invalid_password_user, exiting_user
-from models.user import User
+from data.user_data import create_user, invalid_email_user, invalid_password_user, existing_user
+
 from pages.registration_page import RegistrationPage
 
-
+@pytest.mark.smoke
+@pytest.mark.regression
 def test_registration_success(driver):
     registration_page = RegistrationPage(driver)
 
@@ -43,11 +44,11 @@ def test_registration_wrong_password(driver):
     assert "Wrong email or password format" in registration_page.get_alert_text()
     registration_page.accept_alert()
 
-
+@pytest.mark.regression
 def test_registration_exists_user(driver):
     registration_page = RegistrationPage(driver)
 
-    user = exiting_user()
+    user = existing_user()
     registration_page.open_registration_form()
     registration_page.fill_email(user.username)
     registration_page.fill_password(user.password)

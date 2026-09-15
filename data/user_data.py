@@ -19,7 +19,7 @@ INVALID_EMAIL = "margogmail.com"
 INVALID_PASSWORD = "Mmar123"
 
 
-def exiting_user():
+def existing_user():
     return create_user(username=EXISTING_USER_EMAIL, password=EXISTING_USER_PASSWORD)
 
 def invalid_email_user():

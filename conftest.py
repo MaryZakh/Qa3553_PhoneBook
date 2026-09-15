@@ -3,7 +3,7 @@ import pytest
 from selenium import webdriver
 
 from data.contact_data import create_contact
-from data.user_data import exiting_user
+from data.user_data import existing_user
 from pages.add_new_contact_page import ContactPage
 from pages.contacts_page import ContactsPage
 from pages.login_page import LoginPage
@@ -12,7 +12,7 @@ from utils.logger_config import configure_logging
 configure_logging()
 logger = logging.getLogger(__name__)
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def driver():
 
     logger.info("Starting browser session")
@@ -28,10 +28,10 @@ def driver():
 
     driver.quit()
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def authenticated_driver(driver):
     login_page = LoginPage(driver)
-    user = exiting_user()
+    user = existing_user()
 
     logger.info(f"Logging in user: {user.username}")
 
