@@ -1,3 +1,5 @@
+import logging
+
 import pytest
 
 from data.user_data import create_user, existing_user, invalid_email_user, invalid_password_user
@@ -5,11 +7,18 @@ from data.user_datasets import INVALID_LOGIN_USERS
 from pages.login_page import LoginPage
 
 
+logger = logging.getLogger(__name__)
+
+
+
+
 @pytest.mark.smoke
 @pytest.mark.regression
 def test_login_success(driver):
     login_page = LoginPage(driver)
     user = existing_user()
+
+    logger.info("Testing successful login: username=%s", user.username)
 
     login_page.open_login_form()
     login_page.fill_email(user.username)
@@ -27,6 +36,10 @@ def test_login_success(driver):
 def test_login_rejected(driver,user_factory):
     login_page = LoginPage(driver)
     user = user_factory()
+
+    logger.info("Testing rejected login: case = %s, username=%s",
+                user_factory.__name__,
+                user.username)
 
     login_page.open_login_form()
     login_page.fill_email(user.username)

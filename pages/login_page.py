@@ -13,6 +13,7 @@ class LoginPage(BasePage):
     EMAIL_INPUT = (By.CSS_SELECTOR, "input[name='email']")
     PASSWORD_INPUT = (By.CSS_SELECTOR, "input[name='password']")
     LOGIN_BTN = (By.XPATH, "//button[text()='Login']")
+    #LOGIN_BTN = (By.XPATH, "//button[text()='LoginBROKEN']")
     SIGN_OUT_BTN = (By.XPATH,"//*[text()='Sign Out']")
 
     # def __init__(self, driver):
