@@ -7,8 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base_page import BasePage
 
-
 logger = logging.getLogger(__name__)
+
 
 class ContactsPage(BasePage):
     CONTACTS_NAV_LINK = (By.CSS_SELECTOR, "[href='/contacts']")
@@ -21,14 +21,15 @@ class ContactsPage(BasePage):
     EDIT_ADDRESS_INPUT = (By.CSS_SELECTOR, "input[placeholder='Address']")
     EDIT_DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[placeholder='desc']")
     EDIT_SAVE_BTN = (By.XPATH, "//button[text()='Save']")
-    REMOVE_BTN = (By.XPATH,"//button[text()='Remove']")
+    REMOVE_BTN = (By.XPATH, "//button[text()='Remove']")
 
     def open_contacts_list(self):
         # Переходит на страницу /contacts по ссылке в навигации и ждёт смены
         # URL плюс небольшую паузу, чтобы список карточек успел отрисоваться
         self.click(self.CONTACTS_NAV_LINK)
-        WebDriverWait(self.driver, 5).until(EC.url_contains("/contacts"))
-        time.sleep(1)
+        # WebDriverWait(self.driver, 5).until(EC.url_contains("/contacts"))
+        # time.sleep(1)
+        self.wait_until_url_matches(r"/contacts$")
 
     def contact_cards_count(self, phone):
         # Считает, сколько карточек контактов с данным телефоном сейчас
@@ -43,57 +44,51 @@ class ContactsPage(BasePage):
         # видима на странице — используется сразу после сохранения контакта,
         # чтобы убедиться, что он реально появился в списке.
         locator = (By.XPATH, f"//h3[text()='{phone}']")
-        element = WebDriverWait(self.driver, 5).until(
-            EC.presence_of_element_located(locator))
-        return element.is_displayed()
+        # element = WebDriverWait(self.driver, 5).until(
+        #     EC.presence_of_element_located(locator))
+        return self.wait_until_visible(locator).is_displayed()
 
-
-
-    def open_contact_details(self,phone):
+    def open_contact_details(self, phone):
         logger.info(f"Opening contact details for phone:{phone}")
 
         locator = (By.XPATH, f"//h3[text()='{phone}']/..")
         self.click(locator)
 
-
     def open_edit_mode(self):
         logger.info("Opening edit mode")
         self.click(self.EDIT_BTN)
 
-    def set_edit_field(self, locator,value):
-        self.fill(locator,value)
+    def set_edit_field(self, locator, value):
+        self.fill(locator, value)
 
     def submit_edit(self):
         logger.info("Submiting contact edit")
         self.click(self.EDIT_SAVE_BTN)
         time.sleep(3)
 
-    def contact_name_for_phone(self,phone):
+    def contact_name_for_phone(self, phone):
         card = self.driver.find_element(By.XPATH, f"//h3[text()='{phone}']/..")
-        return card.find_element(By.TAG_NAME,"h2").text
+        return card.find_element(By.TAG_NAME, "h2").text
 
-    def get_edit_contact(self,locator):
+    def get_edit_contact(self, locator):
         return self.find(locator).get_attribute("value")
-
 
     def remove_current_contact(self):
         logger.info("Deleting contact")
         self.click(self.REMOVE_BTN)
-        time.sleep(2)
+        # time.sleep(2)
+        self.wait_until_url_matches(r"/contacts$")
 
     def open_first_contact(self):
         cards = self.driver.find_elements(*self.CONTACT_CARDS)
         first_card = cards[0]
         first_card.click()
 
-
     def total_contacts_count(self):
         return len(self.driver.find_elements(*self.CONTACT_CARDS))
 
-
     def remove_all_contacts(self):
         logger.info("Deleting all contacts")
-        while self.total_contacts_count()>0:
+        while self.total_contacts_count() > 0:
             self.open_first_contact()
             self.remove_current_contact()
-

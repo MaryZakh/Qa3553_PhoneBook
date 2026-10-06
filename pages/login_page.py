@@ -50,9 +50,10 @@ class LoginPage(BasePage):
 
     def is_logged(self):
         try:
-            WebDriverWait(self.driver,timeout=5).until(
-                EC.visibility_of_element_located(self.SIGN_OUT_BTN)
-            )
+            # WebDriverWait(self.driver,timeout=5).until(
+            #     EC.visibility_of_element_located(self.SIGN_OUT_BTN)
+            self.wait_until_visible(self.SIGN_OUT_BTN)
+
             return True
         except TimeoutException:
             return False
