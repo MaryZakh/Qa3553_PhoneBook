@@ -1,0 +1,4 @@
+2026-10-06 20:17:22,660-INFO-conftest-Starting browser session
+2026-10-06 20:17:24,499-INFO-tests.test_login-Testing rejected login: case = invalid_password_user, username=margo@gmail.com
+2026-10-06 20:17:24,499-INFO-pages.login_page-Opening login form
+2026-10-06 20:17:25,906-INFO-conftest-Closing browser session

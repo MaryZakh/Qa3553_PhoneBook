@@ -1,3 +1,4 @@
+import allure
 import pytest
 from faker import Faker
 import logging
@@ -10,6 +11,7 @@ fake = Faker()
 logger = logging.getLogger(__name__)
 
 
+@allure.title("Editing a contact`s name updates it in the contact list")
 def test_edit_contact_name_updated(authenticated_driver):
     contact_page = ContactPage(authenticated_driver)
     contacts_page = ContactsPage(authenticated_driver)
@@ -29,7 +31,7 @@ def test_edit_contact_name_updated(authenticated_driver):
 
     assert contacts_page.contact_name_for_phone(contact.phone) == new_name
 
-
+@allure.title("Editing a contact`s last_name updates it in the contact list")
 def test_edit_contact_last_name_updated(authenticated_driver):
     contact_page = ContactPage(authenticated_driver)
     contacts_page = ContactsPage(authenticated_driver)

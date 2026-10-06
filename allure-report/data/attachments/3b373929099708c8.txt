@@ -1,0 +1,43 @@
+[32mINFO    [0m conftest:conftest.py:25 Starting browser session
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:54573
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/timeouts HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/window/maximize HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/url HTTP/1.1" 200 0
+[32mINFO    [0m tests.test_login:test_login.py:21 Testing successful login: username=margo@gmail.com
+[32mINFO    [0m pages.login_page:login_page.py:25 Opening login form
+[35mDEBUG   [0m pages.base_page:base_page.py:16 Click on  ('css selector', "[href='/login']")
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:11 WebDriver find: by=css selector, value=[href='/login']
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/execute/sync HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "GET /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.17/enabled HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:15 Webdriver click
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.17/click HTTP/1.1" 200 0
+[35mDEBUG   [0m pages.base_page:base_page.py:20 Fill('css selector', "input[name='email']") with margo@gmail.com
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:11 WebDriver find: by=css selector, value=input[name='email']
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/execute/sync HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:19 WebDriver change value
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.34/clear HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:19 WebDriver change value
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.34/value HTTP/1.1" 200 0
+[35mDEBUG   [0m pages.base_page:base_page.py:20 Fill('css selector', "input[name='password']") with Mmar123456$
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:11 WebDriver find: by=css selector, value=input[name='password']
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/execute/sync HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:19 WebDriver change value
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.35/clear HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:19 WebDriver change value
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.35/value HTTP/1.1" 200 0
+[35mDEBUG   [0m pages.base_page:base_page.py:16 Click on  ('xpath', "//button[text()='Login']")
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:11 WebDriver find: by=xpath, value=//button[text()='Login']
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/execute/sync HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "GET /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.37/enabled HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:15 Webdriver click
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element/f.7F0F636B1ABEED2818C0CBFD019D7F48.d.AF79852180860EFD223FC13B71955B0F.e.37/click HTTP/1.1" 200 0
+[35mDEBUG   [0m utils.selenium_listener:selenium_listener.py:11 WebDriver find: by=xpath, value=//*[text()='Sign Out']
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/element HTTP/1.1" 200 0
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "POST /session/d361e765ace7813e8db9843321cef09c/execute/sync HTTP/1.1" 200 0
+[32mINFO    [0m conftest:conftest.py:34 Closing browser session
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:544 http://localhost:54573 "DELETE /session/d361e765ace7813e8db9843321cef09c HTTP/1.1" 200 0

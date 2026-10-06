@@ -1,0 +1,4 @@
+2026-10-06 20:17:12,392-INFO-conftest-Starting browser session
+2026-10-06 20:17:13,806-INFO-tests.test_login-Testing successful login: username=margo@gmail.com
+2026-10-06 20:17:13,807-INFO-pages.login_page-Opening login form
+2026-10-06 20:17:15,166-INFO-conftest-Closing browser session
