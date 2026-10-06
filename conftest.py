@@ -13,6 +13,7 @@ from data.user_data import existing_user
 from pages.add_new_contact_page import ContactPage
 from pages.contacts_page import ContactsPage
 from pages.login_page import LoginPage
+from utils.config import BASE_URL
 from utils.logger_config import configure_logging
 from utils.selenium_listener import SeleniumEventListener
 
@@ -28,7 +29,7 @@ def driver():
     driver = webdriver.Chrome()
     driver.implicitly_wait(5)
     driver.maximize_window()
-    driver.get("https://telranedu.web.app/")
+    driver.get(BASE_URL)
 
     yield EventFiringWebDriver(driver, SeleniumEventListener())
 

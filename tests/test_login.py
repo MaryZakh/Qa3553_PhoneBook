@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 
 
 
-
 @pytest.mark.smoke
 @pytest.mark.regression
 @allure.feature("Login")
@@ -30,10 +29,7 @@ def test_login_success(driver):
     login_page.fill_email(user.username)
     login_page.fill_password(user.password)
     login_page.submit_login()
-
-
     assert login_page.is_logged() is True
-
 
 
 
